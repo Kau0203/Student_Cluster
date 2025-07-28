@@ -31,7 +31,7 @@ if uploaded_file:
     st.subheader("📋 Clustered Data")
     st.dataframe(df)
 
-    # Scatter Plot
+    # Scatter Plot (CGPA vs Lab Score)
     st.subheader("🔵 Scatter Plot (CGPA vs Lab Score)")
     fig1, ax1 = plt.subplots()
     scatter = ax1.scatter(df['CGPA'], df['Lab_Score'], c=df['Cluster'], cmap='viridis')
@@ -40,20 +40,20 @@ if uploaded_file:
     ax1.set_title("Student Clusters")
     st.pyplot(fig1)
 
-    # Bar Chart
+    # Bar Chart - Cluster Size
     st.subheader("📊 Cluster Size Distribution")
     cluster_counts = df['Cluster'].value_counts().sort_index()
     fig2, ax2 = plt.subplots()
-    ax2.bar(cluster_counts.index, cluster_counts.values)
+    ax2.bar(cluster_counts.index.astype(str), cluster_counts.values, color='skyblue')
     ax2.set_xlabel("Cluster")
     ax2.set_ylabel("Number of Students")
     st.pyplot(fig2)
 
-    # Pie Chart
+    # Pie Chart - Lab Score per Cluster
     st.subheader("🥧 Total Lab Score per Cluster")
     lab_score_sum = df.groupby('Cluster')['Lab_Score'].sum()
     fig3, ax3 = plt.subplots()
-    ax3.pie(lab_score_sum, labels=lab_score_sum.index, autopct='%1.1f%%')
+    ax3.pie(lab_score_sum, labels=lab_score_sum.index, autopct='%1.1f%%', startangle=90)
     ax3.set_title("Total Lab Score per Cluster")
     st.pyplot(fig3)
 
@@ -62,17 +62,16 @@ st.markdown("""
     <style>
     .footer {
         position: fixed;
+        right: 0;
         bottom: 0;
-        left: 0;
-        color: #888;
-        font-size: 16px;
-        padding: 12px 20px;
+        padding: 10px;
         text-align: right;
-        z-index: 100;
+        font-size: 14px;
+        color: gray;
     }
     </style>
     <div class="footer">
-        Developed by Vishal<br>
+        Developed by Vishal <br>
         <a href="mailto:vprakashpate@gmail.com">vprakashpate@gmail.com</a>
     </div>
     """, unsafe_allow_html=True)
