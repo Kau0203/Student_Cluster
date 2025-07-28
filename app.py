@@ -71,7 +71,7 @@ st.markdown("""
     }
     </style>
     <div class="footer">
-        Developed by Vishal <br>
-        <a href="mailto:vprakashpate@gmail.com">vprakashpate@gmail.com</a>
+        Developed by Kaumudi <br>
+        <a href="mailto:kaumudigavkhadkar275@gmail.com">vprakashpate@gmail.com</a>
     </div>
     """, unsafe_allow_html=True)
